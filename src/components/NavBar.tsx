@@ -1,19 +1,22 @@
 import { SearchIcon } from "lucide-react";
 import { Input } from "./ui/input";
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   return (
-    <nav className="sticky bg-transparent top-0 w-full flex items-center justify-between gap-2 z-50">
-      <div className="flex justify-between container mx-auto p-4 items-center">
-        <div className="font-bold">
-          XAV<span className="text-red-400">Technologies</span>
-        </div>
+    <nav className="sticky bg-black/50 top-0 w-full flex items-center justify-between gap-2 z-50">
+      <div className="container flex justify-between  mx-auto p-4 items-center">
+        <Link to="/" className="font-bold text-gray-400">
+          XAV<span className="text-red-500">Technologies</span>
+        </Link>
         <div className="hidden md:flex text-white">
           <ul className="flex space-x-6 ml-10">
-            <li className="hover:text-red-400 cursor-pointer">Home</li>
-            <li className="hover:text-red-400 cursor-pointer">Movies</li>
-            <li className="hover:text-red-400 cursor-pointer">TV Shows</li>
-            <li className="hover:text-red-400 cursor-pointer">Actors</li>
+            <Link to="/">
+              <li className="hover:text-red-400 cursor-pointer">Home</li>
+            </Link>
+            <Link to="/favorites">
+              <li className="hover:text-red-400 cursor-pointer">My Fav</li>
+            </Link>
           </ul>
         </div>
         <div className="relative">

@@ -1,4 +1,5 @@
 import { Film, Star } from "lucide-react";
+import { Link } from "react-router-dom";
 
 type CardProps = {
   movie: {
@@ -19,7 +20,9 @@ const Card = ({ movie }: CardProps) => {
     return null;
   }
   return (
-    <div className="group relative block w-full h-64 aspect-2/3 bg-gray-800 rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105 hover:z-10 shadow-lg">
+    <Link
+      to={`/movie/${movie.id}`}
+      className="group relative block w-full h-64 aspect-2/3 bg-gray-800 rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105 hover:z-10 shadow-lg">
       <img
         src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
         alt={movie.title}
@@ -44,7 +47,7 @@ const Card = ({ movie }: CardProps) => {
           <span>{movie.release_date?.split("-")[0]}</span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

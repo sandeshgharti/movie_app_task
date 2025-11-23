@@ -1,5 +1,6 @@
 import type { Movie } from "@/types";
-import { Info, Play } from "lucide-react";
+import { Info } from "lucide-react";
+import { Link } from "react-router-dom";
 
 type HeroProps = {
   movie: Movie;
@@ -17,7 +18,7 @@ const Hero: React.FC<HeroProps> = ({ movie }) => {
         alt={movie.title}
         className="absolute inset-0 h-full w-full object-cover brightness-50"
       />
-      <div className="absolute top-1/2 left-0 transform text-start px-4">
+      <div className="absolute top-1/2 left-0 transform -translate-y-1/2 text-start px-4">
         <div className="max-w-3xl space-y-4">
           <h1 className="text-4xl md:text-6xl font-bold text-white drop-shadow-lg">
             {movie.title || movie.name}
@@ -26,12 +27,11 @@ const Hero: React.FC<HeroProps> = ({ movie }) => {
             {movie.overview}
           </p>
           <div className="flex items-center gap-4 pt-4">
-            <div className="flex items-center gap-2 bg-white text-black px-6 py-2.5 rounded hover:bg-gray-200 transition-colors font-semibold">
-              <Play className="h-5 w-5 fill-black" /> Play Trailer
-            </div>
-            <div className="flex items-center gap-2 bg-gray-500/40 backdrop-blur-md text-white px-6 py-2.5 rounded hover:bg-gray-500/60 transition-colors font-semibold">
+            <Link
+              to={`/movie/${movie.id}`}
+              className="flex items-center gap-2 bg-red-600 backdrop-blur-md text-white px-6 py-2.5 rounded hover:bg-red-700 transition-colors font-semibold">
               <Info className="h-5 w-5" /> More Info
-            </div>
+            </Link>
           </div>
         </div>
       </div>
