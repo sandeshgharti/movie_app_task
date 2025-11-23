@@ -3,12 +3,12 @@ import { Input } from "./ui/input";
 
 export default function NavBar() {
   return (
-    <nav className="sticky top-0 w-full flex items-center justify-between gap-2 z-50">
+    <nav className="sticky bg-transparent top-0 w-full flex items-center justify-between gap-2 z-50">
       <div className="flex justify-between container mx-auto p-4 items-center">
         <div className="font-bold">
           XAV<span className="text-red-400">Technologies</span>
         </div>
-        <div className="hidden md:flex">
+        <div className="hidden md:flex text-white">
           <ul className="flex space-x-6 ml-10">
             <li className="hover:text-red-400 cursor-pointer">Home</li>
             <li className="hover:text-red-400 cursor-pointer">Movies</li>

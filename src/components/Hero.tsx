@@ -1,22 +1,38 @@
-import { Button } from "./ui/button";
+import type { Movie } from "@/types";
+import { Info, Play } from "lucide-react";
 
-const Hero = () => {
+type HeroProps = {
+  movie: Movie;
+};
+
+const Hero: React.FC<HeroProps> = ({ movie }) => {
+  console.log("Hero section", movie);
+  if (!movie) {
+    return null;
+  }
   return (
-    <div className="container mx-auto h-[80vh] relative overflow-hidden ">
+    <div className="container mx-auto -mt-20 h-[90vh] relative overflow-hidden ">
       <img
-        src="https://www.juliensauctions.com/cdn-cgi/image/width=3840,quality=75/https://cdn.sanity.io/images/ib3mo6bj/production/5126ab3c7fa2b14452a3fb6f8c4c118a793b477d-2000x1452.jpg?w=2000&h=1452&q=90&fit=crop"
-        alt=""
+        src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+        alt={movie.title}
         className="absolute inset-0 h-full w-full object-cover brightness-50"
       />
       <div className="absolute top-1/2 left-0 transform text-start px-4">
-        <h1 className="text-white text-5xl font-bold">Movies Name</h1>
-        <p className="text-white mt-4 max-w-lg text-2xl">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-        <div className="flex gap-2 mt-4">
-          <Button variant={"outline"}>Play Trailer</Button>
-          <Button>More Info</Button>
+        <div className="max-w-3xl space-y-4">
+          <h1 className="text-4xl md:text-6xl font-bold text-white drop-shadow-lg">
+            {movie.title || movie.name}
+          </h1>
+          <p className="mt-2 text-lg text-gray-200 line-clamp-3 md:line-clamp-none max-w-2xl drop-shadow-md">
+            {movie.overview}
+          </p>
+          <div className="flex items-center gap-4 pt-4">
+            <div className="flex items-center gap-2 bg-white text-black px-6 py-2.5 rounded hover:bg-gray-200 transition-colors font-semibold">
+              <Play className="h-5 w-5 fill-black" /> Play Trailer
+            </div>
+            <div className="flex items-center gap-2 bg-gray-500/40 backdrop-blur-md text-white px-6 py-2.5 rounded hover:bg-gray-500/60 transition-colors font-semibold">
+              <Info className="h-5 w-5" /> More Info
+            </div>
+          </div>
         </div>
       </div>
     </div>
