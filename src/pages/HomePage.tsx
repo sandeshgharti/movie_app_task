@@ -4,7 +4,7 @@ import {
   fetchPopularMovies,
   fetchTopRatedMovies,
   fetchTrendingMovies,
-} from "@/utils/https";
+} from "@/services/https";
 import { useQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 

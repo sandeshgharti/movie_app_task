@@ -12,7 +12,7 @@ const Hero: React.FC<HeroProps> = ({ movie }) => {
     return null;
   }
   return (
-    <div className="container mx-auto -mt-20 h-[90vh] relative overflow-hidden ">
+    <div className=" -mt-20 h-[90vh] relative overflow-hidden ">
       <img
         src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
         alt={movie.title}

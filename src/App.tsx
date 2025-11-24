@@ -5,12 +5,14 @@ import HomePage from "./pages/HomePage";
 import MovieDetails from "./pages/MovieDetailsPage";
 import Favorites from "./pages/FavoritesPage";
 import SearchPage from "./pages/SearchPage";
+import ScrollToTopOnPageChange from "./components/ScrollToTopOnPageChange";
 
 function App() {
   return (
     <>
       <div className="bg-[#141414]">
         <NavBar />
+        <ScrollToTopOnPageChange />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/movie/:id" element={<MovieDetails />} />

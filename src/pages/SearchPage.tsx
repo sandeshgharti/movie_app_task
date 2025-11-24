@@ -1,6 +1,6 @@
 import Card from "@/components/Card";
 import type { Movie } from "@/types";
-import { searchMovies } from "@/utils/https";
+import { searchMovies } from "@/services/https";
 import { useQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 import { useSearchParams } from "react-router-dom";

@@ -1,7 +1,7 @@
 import Rows from "@/components/Rows";
 import { toggleFavorite } from "@/store/slices";
 import type { Movie } from "@/types";
-import { fetchMovieById } from "@/utils/https";
+import { fetchMovieById } from "@/services/https";
 import { useQuery } from "@tanstack/react-query";
 import {
   Calendar,
