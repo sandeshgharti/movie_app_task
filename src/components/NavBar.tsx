@@ -6,8 +6,8 @@ export default function NavBar() {
   return (
     <nav className="sticky bg-black/50 top-0 w-full flex items-center justify-between gap-2 z-50">
       <div className="container flex justify-between  mx-auto p-4 items-center">
-        <Link to="/" className="font-bold text-gray-400">
-          XAV<span className="text-red-500">Technologies</span>
+        <Link to="/" className="font-bold text-gray-400 text-lg">
+          XAV<span className="text-red-500">Stream</span>
         </Link>
         <div className="hidden md:flex text-white">
           <ul className="flex space-x-6 ml-10">

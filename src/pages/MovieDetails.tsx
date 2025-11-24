@@ -1,7 +1,9 @@
 import Rows from "@/components/Rows";
+import { toggleFavorite } from "@/store/slices";
 import { fetchMovieById } from "@/utils/https";
 import { useQuery } from "@tanstack/react-query";
-import { Calendar, Clock, PlayCircle, Star } from "lucide-react";
+import { Calendar, Clock, Heart, PlayCircle, Star } from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 
 const MovieDetails = () => {
@@ -15,6 +17,18 @@ const MovieDetails = () => {
     queryKey: ["movie", id],
     queryFn: () => fetchMovieById(id as string),
   });
+
+  const dispatch = useDispatch();
+
+  const toggleFavorites = () => {
+    dispatch(toggleFavorite(movie));
+  };
+
+  const favMovies = useSelector((state: any) => state.myFavorites.favMovies);
+
+  const isFav = favMovies.find(
+    (favMovie: { id: number }) => favMovie.id === Number(id)
+  );
 
   //   console.log("movies details", movie);
   const trailer = movie?.videos.results.find(
@@ -104,6 +118,18 @@ const MovieDetails = () => {
                         <PlayCircle className="h-5 w-5" /> Watch Trailer
                       </Link>
                     )}
+                    <button
+                      onClick={toggleFavorites}
+                      className={`flex items-center gap-2 px-6 py-3 rounded-lg font-bold transition-all border ${
+                        isFav
+                          ? "bg-white text-black border-white hover:bg-gray-200"
+                          : "bg-transparent text-white border-gray-500 hover:border-white"
+                      }`}>
+                      <Heart
+                        className={`h-5 w-5 ${isFav ? "fill-black" : ""}`}
+                      />
+                      {isFav ? "Remove from Fav" : "Add to Fav"}
+                    </button>
                   </div>
                 </div>
               </div>

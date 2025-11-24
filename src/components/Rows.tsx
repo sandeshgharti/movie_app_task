@@ -19,7 +19,7 @@ const Rows: React.FC<PropsType> = ({ title, movies }) => {
         <div
           className="flex gap-2 overflow-x-scroll overflow-y-hidden no-scrollbar"
           ref={scrollContainerRef}>
-          <div className="flex gap-2">
+          <div className="flex gap-3">
             {movies?.map((movie) => (
               <Card key={movie.id} movie={movie} />
             ))}

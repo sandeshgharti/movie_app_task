@@ -1,28 +1,38 @@
-import { Film, Star } from "lucide-react";
+import { Film, Heart, Star } from "lucide-react";
+import type { MouseEvent } from "react";
 import { Link } from "react-router-dom";
+import { Button } from "./ui/button";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleFavorite } from "@/store/slices";
+import type { Movie } from "@/types";
 
 type CardProps = {
-  movie: {
-    id: number;
-    title: string;
-    name?: string;
-    poster_path: string | null;
-    backdrop_path: string | null;
-    overview: string;
-    vote_average: number;
-    release_date: string;
-    genre_ids?: number[];
-  };
+  movie: Movie;
 };
 
 const Card = ({ movie }: CardProps) => {
+  const dispatch = useDispatch();
+
+  const toggleFavorites = () => {
+    dispatch(toggleFavorite(movie));
+  };
+  const handleFavClick = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleFavorites();
+  };
+
+  const favMovies = useSelector((state: any) => state.myFavorites.favMovies);
+
+  const isFav = favMovies.find((favMovie: Movie) => favMovie.id === movie.id);
+
   if (!movie) {
     return null;
   }
   return (
     <Link
       to={`/movie/${movie.id}`}
-      className="group relative block w-full h-64 aspect-2/3 bg-gray-800 rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105 hover:z-10 shadow-lg">
+      className="group relative block w-40 h-64 aspect-2/3 bg-gray-800 rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105  hover:z-10 shadow-lg">
       <img
         src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
         alt={movie.title}
@@ -46,6 +56,17 @@ const Card = ({ movie }: CardProps) => {
           </span>
           <span>{movie.release_date?.split("-")[0]}</span>
         </div>
+        <Button
+          onClick={handleFavClick}
+          variant={"outline"}
+          className={`w-full ${
+            isFav
+              ? "bg-red-600 text-white hover:text-white border-red-600 hover:bg-red-700"
+              : ""
+          }`}>
+          <Heart className="h-3 w-3" />
+          {isFav ? "Remove" : "Add to Fav"}
+        </Button>
       </div>
     </Link>
   );
