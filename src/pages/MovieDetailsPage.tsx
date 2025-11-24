@@ -41,7 +41,6 @@ const MovieDetails = () => {
     (favMovie: { id: number }) => favMovie.id === Number(id)
   );
 
-  //   console.log("movies details", movie);
   const trailer = movie?.videos.results.find(
     (vid: { type: string; site: string }) =>
       vid.type === "Trailer" && vid.site === "YouTube"

@@ -5,8 +5,7 @@ export async function fetchTrendingMovies() {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ZTJmMmZjYjNiZTA3ZmI0YzRkYzE2ZmUzNjU4Nzk0NyIsIm5iZiI6MTc2Mzg4MzAzNS4wNDcwMDAyLCJzdWIiOiI2OTIyYjgxYjRhNzViYzRjZDRkZDQ5YTUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.62a45FRN-gLFYPDj4pVbeUluLFVNszYLEbjGpU8BCnE",
+      Authorization: `Bearer ${import.meta.env.VITE_AUTHORIZATION_TOKEN}`,
     },
   });
   if (!response.ok) {
@@ -22,8 +21,7 @@ export async function fetchPopularMovies() {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ZTJmMmZjYjNiZTA3ZmI0YzRkYzE2ZmUzNjU4Nzk0NyIsIm5iZiI6MTc2Mzg4MzAzNS4wNDcwMDAyLCJzdWIiOiI2OTIyYjgxYjRhNzViYzRjZDRkZDQ5YTUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.62a45FRN-gLFYPDj4pVbeUluLFVNszYLEbjGpU8BCnE",
+      Authorization: `Bearer ${import.meta.env.VITE_AUTHORIZATION_TOKEN}`,
     },
   };
 
@@ -42,8 +40,7 @@ export async function fetchTopRatedMovies() {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ZTJmMmZjYjNiZTA3ZmI0YzRkYzE2ZmUzNjU4Nzk0NyIsIm5iZiI6MTc2Mzg4MzAzNS4wNDcwMDAyLCJzdWIiOiI2OTIyYjgxYjRhNzViYzRjZDRkZDQ5YTUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.62a45FRN-gLFYPDj4pVbeUluLFVNszYLEbjGpU8BCnE",
+      Authorization: `Bearer ${import.meta.env.VITE_AUTHORIZATION_TOKEN}`,
     },
   };
 
@@ -61,8 +58,7 @@ export async function fetchMovieById(id: string) {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ZTJmMmZjYjNiZTA3ZmI0YzRkYzE2ZmUzNjU4Nzk0NyIsIm5iZiI6MTc2Mzg4MzAzNS4wNDcwMDAyLCJzdWIiOiI2OTIyYjgxYjRhNzViYzRjZDRkZDQ5YTUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.62a45FRN-gLFYPDj4pVbeUluLFVNszYLEbjGpU8BCnE",
+      Authorization: `Bearer ${import.meta.env.VITE_AUTHORIZATION_TOKEN}`,
     },
   };
 
@@ -81,8 +77,7 @@ export async function searchMovies(query: string) {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ZTJmMmZjYjNiZTA3ZmI0YzRkYzE2ZmUzNjU4Nzk0NyIsIm5iZiI6MTc2Mzg4MzAzNS4wNDcwMDAyLCJzdWIiOiI2OTIyYjgxYjRhNzViYzRjZDRkZDQ5YTUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.62a45FRN-gLFYPDj4pVbeUluLFVNszYLEbjGpU8BCnE",
+      Authorization: `Bearer ${import.meta.env.VITE_AUTHORIZATION_TOKEN}`,
     },
   };
   const response = await fetch(

@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const myFavoritesSlice = createSlice({
   name: "myFavorites",
   initialState: {
-    favMovies: [] as Movie[],
+    favMovies: JSON.parse(localStorage.getItem("favMovies") || "[]") as Movie[],
   },
   reducers: {
     toggleFavorite: (state, action) => {
@@ -15,8 +15,10 @@ const myFavoritesSlice = createSlice({
         state.favMovies = state.favMovies.filter(
           (movie) => movie.id !== action.payload.id
         );
+        localStorage.setItem("favMovies", JSON.stringify(state.favMovies));
       } else {
         state.favMovies.push({ ...action.payload, isFavorite: true });
+        localStorage.setItem("favMovies", JSON.stringify(state.favMovies));
       }
     },
   },

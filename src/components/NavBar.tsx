@@ -19,7 +19,6 @@ export default function NavBar() {
     setSearchTerm("");
   };
 
-  console.log("search term", searchTerm);
   const backgroundColor = useTransform(
     scrollYProgress,
     [0, 0.1],

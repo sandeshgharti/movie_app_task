@@ -7,7 +7,6 @@ type HeroProps = {
 };
 
 const Hero: React.FC<HeroProps> = ({ movie }) => {
-  console.log("Hero section", movie);
   if (!movie) {
     return null;
   }

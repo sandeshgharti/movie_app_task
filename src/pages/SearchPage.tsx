@@ -14,9 +14,6 @@ const SearchPage = () => {
     queryFn: () => searchMovies(query as string),
   });
 
-  console.log("search results", searchResults);
-  console.log("Query:", query);
-
   return (
     <div className="pt-24 px-4 md:px-8 max-w-7xl mx-auto min-h-screen">
       <h1 className="text-3xl font-bold mb-8 text-white">
