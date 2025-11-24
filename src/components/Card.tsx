@@ -22,7 +22,10 @@ const Card = ({ movie }: CardProps) => {
     toggleFavorites();
   };
 
-  const favMovies = useSelector((state: any) => state.myFavorites.favMovies);
+  const favMovies = useSelector(
+    (state: { myFavorites: { favMovies: Movie[] } }) =>
+      state.myFavorites.favMovies
+  );
 
   const isFav = favMovies.find((favMovie: Movie) => favMovie.id === movie.id);
 

@@ -6,6 +6,7 @@ import {
   fetchTrendingMovies,
 } from "@/utils/https";
 import { useQuery } from "@tanstack/react-query";
+import { Loader2 } from "lucide-react";
 
 const HomePage = () => {
   // Fetch Trending Movies
@@ -40,19 +41,31 @@ const HomePage = () => {
   return (
     <div className="min-h-screen bg-[#141414] pb-25">
       <Hero movie={trendingMovies?.[0] || null} />
-      {trendingMoviesLoading && <p>Loading...</p>}
+      {trendingMoviesLoading && (
+        <div className="flex justify-center py-20">
+          <Loader2 className="h-10 w-10 text-white animate-spin" />
+        </div>
+      )}
       {trendingMoviesError && <p>Error loading movies</p>}
       {!trendingMoviesLoading && !trendingMoviesError && (
         <Rows title="Trending Now" movies={trendingMovies} />
       )}
 
-      {popularMoviesLoading && <p>Loading...</p>}
+      {popularMoviesLoading && (
+        <div className="flex justify-center py-20">
+          <Loader2 className="h-10 w-10 text-white animate-spin" />
+        </div>
+      )}
       {popularMoviesError && <p>Error loading popular movies</p>}
       {!popularMoviesLoading && !popularMoviesError && (
         <Rows title="Popular on XAV" movies={popularMovies} />
       )}
 
-      {topRatedMoviesLoading && <p>Loading...</p>}
+      {topRatedMoviesLoading && (
+        <div className="flex justify-center py-20">
+          <Loader2 className="h-10 w-10 text-white animate-spin" />
+        </div>
+      )}
       {topRatedMoviesError && <p>Error loading top rated movies</p>}
       {!topRatedMoviesLoading && !topRatedMoviesError && (
         <Rows title="Top Rated" movies={topRatedMovies} />

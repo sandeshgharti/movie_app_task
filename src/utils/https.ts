@@ -73,3 +73,25 @@ export async function fetchMovieById(id: string) {
   const data = await response.json();
   return data;
 }
+
+export async function searchMovies(query: string) {
+  const url =
+    "https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1";
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ZTJmMmZjYjNiZTA3ZmI0YzRkYzE2ZmUzNjU4Nzk0NyIsIm5iZiI6MTc2Mzg4MzAzNS4wNDcwMDAyLCJzdWIiOiI2OTIyYjgxYjRhNzViYzRjZDRkZDQ5YTUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.62a45FRN-gLFYPDj4pVbeUluLFVNszYLEbjGpU8BCnE",
+    },
+  };
+  const response = await fetch(
+    `${url}&query=${encodeURIComponent(query)}`,
+    options
+  );
+  if (!response.ok) {
+    throw new Error("Failed to search movies");
+  }
+  const { results } = await response.json();
+  return results;
+}

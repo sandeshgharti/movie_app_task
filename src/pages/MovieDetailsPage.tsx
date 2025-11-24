@@ -1,8 +1,16 @@
 import Rows from "@/components/Rows";
 import { toggleFavorite } from "@/store/slices";
+import type { Movie } from "@/types";
 import { fetchMovieById } from "@/utils/https";
 import { useQuery } from "@tanstack/react-query";
-import { Calendar, Clock, Heart, PlayCircle, Star } from "lucide-react";
+import {
+  Calendar,
+  Clock,
+  Heart,
+  Loader2,
+  PlayCircle,
+  Star,
+} from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 
@@ -24,7 +32,10 @@ const MovieDetails = () => {
     dispatch(toggleFavorite(movie));
   };
 
-  const favMovies = useSelector((state: any) => state.myFavorites.favMovies);
+  const favMovies = useSelector(
+    (state: { myFavorites: { favMovies: Movie[] } }) =>
+      state.myFavorites.favMovies
+  );
 
   const isFav = favMovies.find(
     (favMovie: { id: number }) => favMovie.id === Number(id)
@@ -37,9 +48,15 @@ const MovieDetails = () => {
   );
   return (
     <div className="min-h-screen bg-[#141414] -mt-20">
-      {moviesDetailsLoading && <p className="text-white">Loading...</p>}
+      {moviesDetailsLoading && (
+        <div className="flex items-center justify-center py-40">
+          <Loader2 className="h-10 w-10 text-white animate-spin" />
+        </div>
+      )}
       {moviesDetailsError && (
-        <p className="text-white">Error loading movie details.</p>
+        <div className="flex items-center justify-center py-40">
+          <p className="text-white">Error loading movie details.</p>
+        </div>
       )}
       {movie && (
         <div>
